@@ -34,7 +34,10 @@ const restaurant = {
         console.log(`Order received! ${this.starterMenu[starterIndex]} and
         ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
     },
-   
+   orderPasta: function(ing1,ing2, ing3){
+    console.log(`Here is your delicitous pasta with ${ing1}, ${ing2} and ${ing3}`);
+   }
+
 };
 
 restaurant.orderDelivery({
@@ -76,3 +79,67 @@ console.log(a,b);
 
 const{fri: {open: o, close:c}} = openingHours; // you can use this syntax in order to destructure it even further. 
 console.log(o, c); 
+
+
+
+//// SPREAD OPERATOR //////////
+
+
+
+const arr = [7, 8, 9];
+
+//creating new array with elements at the beginning
+
+const badNewArr = [1,2, arr[0],arr[1], arr[2]];
+console.log(badNewArr);
+//Since ES6 we can use the spread opetor, so we dont make it manually like the previous bad arr example.
+
+const newArr = [1, 2, ...arr]; // The spread operator basically does: takes every element individually from the selected array and wites it down
+console.log(newArr); // we can use it when we want to write multiple values separated with comma
+
+
+console.log(...newArr);
+
+//creating new array at the main menu from line 13
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu); //we are not manipulating the original array, only adding and building from scratch
+
+// Important use case of the spread operator: 
+// - to create shallow copies of arrays and to merge two arrays together.
+
+//Copy array
+
+const mainMenuCopy = [...restaurant.mainMenu]; //shallow copy - similar to object assign 
+
+//Join 2 arrays
+const menuJoined = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menuJoined);
+
+//spread string
+
+const str = 'John';
+const letters = [...str, ' ', 's.'];
+//WE CAN ONLY SPREAD WHEN BUILDING AN ARRAY ON WHEN WE PASS VALUES IN A FUNCTION
+// we can not use it in template literals, (we need multiple values separate by comma )
+
+
+//from the Order pasta function
+const ingredients = [prompt("Let's make pasta! Ingredient 1? "), prompt("Ingredient 2? "), prompt("Ingredient 3? ")];
+// console.log(ingredients);
+
+restaurant.orderPasta(...ingredients);// calling the function with the spread operator
+
+
+//since 2018, the spread operator works on objects!!!!!
+
+const newReastaurant = {foundedIn: 1999, ...restaurant, founder: 'Mario'};
+console.log(newReastaurant);
+
+//we can also make shallow copies of objects
+//instead of object.assign
+
+const restaurantCopy = {...restaurant};
+restaurant.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
