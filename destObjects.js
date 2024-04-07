@@ -205,8 +205,8 @@ console.log(guests1);
 
 
 //taking advantage of short cirquiting and OR operator
-const guests2 = restaurant.numguests || 10
-console.log(guests2); //better way to check if its 
+// const guests2 = restaurant.numguests || 10
+// console.log(guests2); //better way to check if its 
 
 
 // Short cirquit AND operator
@@ -222,3 +222,17 @@ if (restaurant.orderPizza){
 //variation to use AND operator instead of IF statement
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 //if it exist 2nd part will be operated, but if it does not it will stop 
+
+
+//--- Nullish Coalescing Operator---
+
+restaurant. numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+// in this if we put the default value to 0, JS will till take this 10 and assign in to guests
+// because 0 is a falsy value now and therefore we go to the second operator.
+// introduced in ES2020, 
+
+//nullish values are null and undefined ( it does not work with the 0 and '') only nullish values will short-circuit the evaluation
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
