@@ -192,3 +192,33 @@ add(...x);
 //From other pizza method
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+
+// ---- ShortCircuit && || ------- 
+
+
+
+/*there might be property on the restaurant object with the property of guests, but 
+we do not know if it exists. hence we are using the ternary operator
+and if it exists to display it or if it does not exist should display value of 10*/ 
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+
+//taking advantage of short cirquiting and OR operator
+const guests2 = restaurant.numguests || 10
+console.log(guests2); //better way to check if its 
+
+
+// Short cirquit AND operator
+// when it comes to short circuit evaluation, AND works at the EXACT OPOSITE OF THE OR OPERATOR
+// WHEN THE FIRST VALUE IS FALSY AND SHORT CIRCUITS and terminates execution
+
+/*in the example below we will check  if the order pizza method exist, if it does exist
+we want to call it */
+if (restaurant.orderPizza){
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+//variation to use AND operator instead of IF statement
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+//if it exist 2nd part will be operated, but if it does not it will stop 

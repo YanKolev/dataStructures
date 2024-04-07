@@ -26,3 +26,25 @@ Rest-> pack elements into an array
 The way to differentiate them is: 
 Spread-> on the RIGHT side of the =(assignment operator), but we can also use it on the left side of the operator with destructuring
 Rest -> 
+
+Short Circuting (&&(and) and ||(or))
+When using OR operator, upon comparing lets say (3 || 'John')=> the result will not always have to be a boolean.
+
+Both of them can use ANY data type, they can return ANY datatype and short-curcuiting(short-circuit evaluation)
+-For the OR operator ||-> short-circuiting means that if the first value is a truthy value it will immediately return that first value. (it will return 3) the other operator will not be even evaluated.
+
+Ex:
+console.log(3 || 'John');->3
+console.log(' ' || 'John');->John
+console.log(true || 0);->true
+console.log(undefined || null);->null
+
+-- With multiple choices--
+console.log(undefined || 0 || ' ' || 'Hello' || 23 || null)-> it will return Hello, as the first truthy value in the chain of OR operations.
+
+---Short cirquit AND operator---
+
+When it comes to short circuit evaluation, AND works at the EXACT OPOSITE OF THE OR OPERATOR- > WHEN THE FIRST VALUE IS FALSY AND SHORT CIRCUITS and terminates execution.
+
+Ex:
+console.log('Hello'&& 23 && null && 'john');->returns null (hits null->falsy value and stops)
