@@ -36,7 +36,11 @@ const restaurant = {
     },
    orderPasta: function(ing1,ing2, ing3){
     console.log(`Here is your delicitous pasta with ${ing1}, ${ing2} and ${ing3}`);
-   }
+    },
+    orderPizza: function(mainIngredient, ...otherIngredients){
+      console.log(mainIngredient);
+      console.log(otherIngredients);
+    },  
 
 };
 
@@ -62,23 +66,23 @@ console.log(restaurantName, hours, tags);
 restaurant.menu // this will be undefined, as we dont have it as ''menu '' in the object
 // setting up a default value-> if does not exist- give it an empty array [] 
 const {menu = [], starterMenu: starters = []}=restaurant;
-console.log(menu,starters);
+// console.log(menu,starters);
 //this is when u dont have hardcoded data here, hence u set up an empty array so you dont have  undefined error message
 
 //Mutating variables while destructuring objects
 
-let a = 111;
-let b = 999;
-const obj = {a: 23, b: 7, c:14}; // here we want a to become 23, and b =7
+// let a = 111;
+// let b = 999;
+// const obj = {a: 23, b: 7, c:14}; // here we want a to become 23, and b =7
 
- ({a, b} = obj); // you need to wrap the mutating variables inside (), otherwise it will become an error upon execution
-console.log(a,b);
+//  ({a, b} = obj); // you need to wrap the mutating variables inside (), otherwise it will become an error upon execution
+// console.log(a,b);
 
 //nested objects
 //take from the object opening hours the insider object friday and use them
 
 const{fri: {open: o, close:c}} = openingHours; // you can use this syntax in order to destructure it even further. 
-console.log(o, c); 
+// console.log(o, c); 
 
 
 
@@ -86,24 +90,24 @@ console.log(o, c);
 
 
 
-const arr = [7, 8, 9];
+// const arr = [7, 8, 9];
 
 //creating new array with elements at the beginning
 
-const badNewArr = [1,2, arr[0],arr[1], arr[2]];
-console.log(badNewArr);
+// const badNewArr = [1,2, arr[0],arr[1], arr[2]];
+// console.log(badNewArr);
 //Since ES6 we can use the spread opetor, so we dont make it manually like the previous bad arr example.
 
-const newArr = [1, 2, ...arr]; // The spread operator basically does: takes every element individually from the selected array and wites it down
-console.log(newArr); // we can use it when we want to write multiple values separated with comma
+// const newArr = [1, 2, ...arr]; // The spread operator basically does: takes every element individually from the selected array and wites it down
+// console.log(newArr); // we can use it when we want to write multiple values separated with comma
 
 
-console.log(...newArr);
+// console.log(...newArr);
 
 //creating new array at the main menu from line 13
 
 const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu); //we are not manipulating the original array, only adding and building from scratch
+// console.log(newMenu); //we are not manipulating the original array, only adding and building from scratch
 
 // Important use case of the spread operator: 
 // - to create shallow copies of arrays and to merge two arrays together.
@@ -114,7 +118,7 @@ const mainMenuCopy = [...restaurant.mainMenu]; //shallow copy - similar to objec
 
 //Join 2 arrays
 const menuJoined = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menuJoined);
+// console.log(menuJoined);
 
 //spread string
 
@@ -134,12 +138,57 @@ restaurant.orderPasta(...ingredients);// calling the function with the spread op
 //since 2018, the spread operator works on objects!!!!!
 
 const newReastaurant = {foundedIn: 1999, ...restaurant, founder: 'Mario'};
-console.log(newReastaurant);
+// console.log(newReastaurant);
 
 //we can also make shallow copies of objects
 //instead of object.assign
 
 const restaurantCopy = {...restaurant};
 restaurant.name = 'Ristorante Roma';
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
+
+
+
+
+
+// ---------------- REST OPERATOR-------------
+
+
+// Under destructuing umbrealla: 
+
+
+//Spread operator, because is on the RIGHT side of the assignment operator(=)
+const arr = [1,2, ...[3, 4]];
+
+//Rest because on is on the LEFT side of the assignment operator(=)
+const [a, b, ...others] = [1,2,3,4,5];
+// console.log(a, b, others);
+
+const [pizza,  , risotto, ...otherfood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// NB! Rest neeeds to be the last in the destructuring assignment.
+
+//OBJECTS and the rest operator
+const {sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+//-------Functions and rest operator
+
+//Function that can add any number of parameters when called, 
+//using for loop to do it
+const add = function (...numbers){
+  let sum = 0;
+  for (let i = 0; i <numbers.length; i++) sum += numbers [i];
+  console.log(sum);
+};
+
+add(2,3);
+add(5, 3, 7, 2);
+add(8,2,5,3,2,1,4);
+
+const x = [23, 5, 7];
+add(...x);
+
+//From other pizza method
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');

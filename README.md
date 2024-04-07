@@ -17,3 +17,12 @@ The big difference is: it takes all the elements from the array, and it does not
 As a consequece we can only use it, in places where we would be needing/using values separated by commas.
 
 The spread operator works on all so-called iterables(arrays, strings, maps or sets BUT NOT Objects).
+
+Rest pattern and rest parameters: 
+Rest pattern looks exactly like the spread operator, it has the same syntax(...) but actually does the oposite of the spread operator. Basically to collect multiple elements and condense them into an array. 
+Spread-> unpack elements into an array
+Rest-> pack elements into an array
+
+The way to differentiate them is: 
+Spread-> on the RIGHT side of the =(assignment operator), but we can also use it on the left side of the operator with destructuring
+Rest -> 
