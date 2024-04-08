@@ -54,3 +54,7 @@ In the OR exercise in the destObjects.js
 we use it as setting a default value in case the first value was a falsy value. 
 
 Works only with the nullish values: null and undefined. It does NOT include 0 or '' (empty string)->its as they are not falsy values and were instead a thruty values.
+
+Logical assignment operators.
+
+OR assignment operator => this operator assigns a value to variable if that current variable is falsy

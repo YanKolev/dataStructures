@@ -236,3 +236,40 @@ console.log(guests);
 //nullish values are null and undefined ( it does not work with the 0 and '') only nullish values will short-circuit the evaluation
 const guestsCorrect = restaurant.numGuests ?? 10;
 console.log(guestsCorrect);
+
+
+// ---Logical Assignment Operators---
+
+const rest1 = {
+  name: 'Capri',
+  numGuests: 0, //if its 0 here- as its falsy value, it will work fine and assign a value
+
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi'
+};
+
+//setting default number of guests for the objects that do not have that property
+
+rest1.numberGuests = rest1.numGuests || 10; // Using OR operator with short circuiting
+rest2.numberGuests = rest2.numGuests || 10; 
+
+
+// OR assignment operator => this operator assigns a value to variable if that current variable is falsy
+rest1.numGuests  ||= 10;
+rest2.numGuests  ||= 10; //using the assign operator in more optimal way
+
+//NULLISH assignment operator ?? (null or undefined)
+// In order not to have 0 as a falsy value, we needto use the nullsish operator  so the guests can behave expectedly
+
+rest1.numGuests  ??= 10;
+rest2.numGuests  ??= 10;
+
+// AND assignment operator- to assign a value to a variable if its currently thruthy
+rest2.owner = rest2.owner && '<Annonymus>';
+//short circuiting AND- when the first value is falsy and immediately returns, but since its truthy and the second one is returned
+//we can make it better like: 
+
+rest2.owner &&= '<Anonymous>';
