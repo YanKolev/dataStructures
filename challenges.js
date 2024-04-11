@@ -82,8 +82,10 @@ const game = {
     console.log(players1, players2);
 
     //2)
-   
+    //remaining-> u can use the rest syntax
+    const [gk, ... fieldPlayers] = players1
+    console.log(gk, fieldPlayers);
 
     //3)
-    const allPlayers = [game.players];
+    const allPlayers = [... players1, ... players2];
     console.log(allPlayers);
