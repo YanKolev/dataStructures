@@ -231,3 +231,155 @@ const ratingStars = [63405, 1808];
 
 
 const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
+
+//============ Destructuring Objects ==========
+
+// Destructure the first book object from the books array into variables called title, author and ISBN.
+const {title, author, ISBN} = books[0];
+
+//Each book object has the keywords property. Destructure the first book object from the books array into a variable called tags. The tags variable should be assigned with the value of the keywords property.
+const {keywords: tags} = books[0];
+
+//The seventh book from the books array is missing the programmingLanguage property. Destructure the seventh book object (books[6]) into variables called language and programmingLanguage. Assign the programmingLanguage variable with a default value of 'unknown'.
+
+const {language, programmingLanguage = 'unknown'} = books[6];
+
+//Below are two variables called bookTitle and bookAuthor. Reassign them with the values of the title and author properties of the first book object from the books array.
+
+let bookTitle = 'unknown';
+let bookAuthor = 'unknown';
+
+({title: bookTitle, author: bookAuthor} = books[0]);
+
+//Each book object has a deeply nested rating property as illustrated below:
+
+/*
+{
+  title: 'Algorithms',
+  ...
+  thirdParty: {
+    goodreads: {
+      rating: 4.41,              // <-- HERE
+      ratingsCount: 1733,
+      reviewsCount: 63,
+      fiveStarRatingCount: 976,
+      oneStarRatingCount: 13
+    }
+  }
+},
+
+*/
+
+/* Destructure the first book object from the books array into a variable called bookRating. In the result of your destructuring, the bookRating variable should be assigned with the value of the book[0].thirdParty.goodreads.rating property.
+
+Please do most of the work on the left side of the assignment operator: const ... = books[0]; */
+
+const {thirdParty: {goodreads: {rating: bookRating}}} = books[0];
+
+/*
+const {thirdParty: {goodreads: {rating: bookRating}}} = books[0];
+
+Example 1: 
+printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
+
+Output: 
+"Algorithms by Robert Sedgewick, 2011" 
+*/
+
+
+function printBookInfo({title, author, year = 'year unknown'}) {
+  console.log(`${title} by ${author}, ${year}`);
+}
+
+//============= SPREAD OPERATOR ============
+
+/*
+Each book object has the author property, which stores an array of strings (author names) if there are multiple authors, or a single string (author name) if there is just one author.
+
+Declare an array called bookAuthors, and fill it with authors of the first two books from the books array. The bookAuthors array should have just one level (no nested arrays).
+
+*/
+const bookAuthors = [...books[0].author, ...books[1].author];
+
+// Write a function called spellWord that accepts a single string as an argument. This function should log to the console each letter of the argument separated by a space.
+
+// CODE spellWord('JavaScript')
+// OUTPUT "J a v a S c r i p t"
+
+function spellWord(word) {
+  console.log(...word);
+}
+
+// ======== Rest Pattern and Parameters ============
+
+/*
+Destructure the keywords property (array) of the first book from the books array into variables called mainKeyword and rest. The first keyword should be assigned to mainKeyword, and the rest of the keywords should be assigned to the rest variable (it should be an array).
+
+*/
+const [mainKeyword, ...rest] = books[0].keywords;
+
+
+// Destructure the second book from the books array into a variable called bookPublisher. The bookPublisher variable should be assigned with the value of the publisher property of the book object. Assign the rest of the properties to the restOfTheBook variable.
+const {publisher: bookPublisher, ...restOfTheBook} = books[1];
+
+//Write a function called printBookAuthorsCount that has two parameters called title and authors. The authors parameter should accept any number of arguments. This function should log to the console a string formatted like that: "The book "${title}" has ${authors.length} authors".
+ //CODE: printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
+ // OUTPUT: "The book "Algorithms" has 2 authors"
+
+function printBookAuthorsCount(title, ...authors) {
+  console.log(`The book "${title}" has ${authors.length} authors`);
+}
+
+
+// =========== Short Circuiting (&& and ||)========
+
+/*
+
+Some of the book objects have the programmingLanguage property, which specifies what programming language is used in the book, for example
+
+{
+  title: 'Algorithms',
+  author: ['Robert Sedgewick', 'Kevin Wayne'],
+  ...
+  programmingLanguage: 'Java',     // <-- HERE
+}
+
+Write a function called hasExamplesInJava that takes a book object from the books array as an argument. This function should return true if the book uses Java, or a string 'no data available' if it uses other language or no programming language at all.
+
+Use short-circuiting.
+
+Code:
+
+hasExamplesInJava(books[0]);
+
+Expected output:
+
+true
+*/
+function hasExamplesInJava(book) {
+  return book.programmingLanguage === 'Java' || 'no data available';
+}
+
+/*
+
+Some of the book objects have the onlineContent property, which is either true or false. Loop over the books array, and for the books that provide online content, log to the console a string in this format: "${title}" provides online content. Use short-circuiting.
+
+{
+  title: 'Operating System Concepts',
+  // ... removed for clarity
+  onlineContent: false,          // <-- HERE
+},
+
+*/
+
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent && console.log(`"${books[i].title}" provides online content`);
+}
+
+//==================== The Nullish Coalescing Operator (??) =============
+
+//There are objects in the books array that don't have the onlineContent property at all. Loop over the books array, and log a string to the console in this format: "${title}" provides no data about its online content.
+
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent ?? console.log(`"${books[i].title} provides no data about its online content"`);
+}
