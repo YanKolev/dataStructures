@@ -129,7 +129,7 @@ const letters = [...str, ' ', 's.'];
 
 
 //from the Order pasta function
-const ingredients = [prompt("Let's make pasta! Ingredient 1? "), prompt("Ingredient 2? "), prompt("Ingredient 3? ")];
+// const ingredients = [prompt("Let's make pasta! Ingredient 1? "), prompt("Ingredient 2? "), prompt("Ingredient 3? ")];
 // console.log(ingredients);
 
 restaurant.orderPasta(...ingredients);// calling the function with the spread operator
@@ -273,3 +273,24 @@ rest2.owner = rest2.owner && '<Annonymus>';
 //we can make it better like: 
 
 rest2.owner &&= '<Anonymous>';
+
+//-------- Looping Arrays: The for of Loop--------- 
+
+const menu = [...restaurant.starterMenu, ... restaurant.mainMenu];
+
+for(const item of menu) console.log(item);
+//this loop will loop over the entire array and for each adoration it will give us access to the current array element that we can specify-> in our case item
+// it will log each element one by one
+// we can still use continue and break  keywords. 
+
+//if we want the current index instead of current element, you can get both but u have to do this
+for (const item of menu.entries()){
+  console.log(`${item[0]+1}:${item[1]}`);
+}
+// console.log(...menu.entries());
+
+//Or we can use destructuring to make it simpler like: 
+
+for (const [i, el] of menu.entries()){
+  console.log(`${i+1}:${el}`);
+}

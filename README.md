@@ -58,3 +58,7 @@ Works only with the nullish values: null and undefined. It does NOT include 0 or
 Logical assignment operators.
 
 OR assignment operator => this operator assigns a value to variable if that current variable is falsy
+
+
+The for of Loop
+This loop will loop over the entire array and for each adoration it will give us access to the current array element that we can specify-> in our case item it will log each element one by one. We can still use continue and break  keywords. 
