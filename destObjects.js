@@ -355,3 +355,38 @@ const users = [
 
 console.log(users[0]?.name ?? 'user array empty');
 //Optional chaining operator that we almost all the time we use with the nullish coalescing operator so that we can do somethin in case that we can a results from the array or object taht we checking.
+
+
+
+
+//----------------- Looping Objects: Object Keys, Values, and Entries------
+
+//looping over propery names- called keys
+
+//we are looping over an array insread of the object directly
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+//how many days are open
+let openStr = `we are open on ${properties.length} days`)
+
+
+
+for (const day of properties){
+  openStr += `${day},`;
+}
+console.log(openStr);
+
+//property VALUES
+
+const values = object.values(openingHours);
+console.log(values);
+
+//to loop over the entiries objects -> the key and the value
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for(const [key,{open,close}] of entries){ //since values is object we are destructuing it we use open, close
+  console.log(`on ${key} we open at ${open} and close at ${close}`);
+}

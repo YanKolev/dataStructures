@@ -73,3 +73,7 @@ console.log(restaurant.openingHours.mon?.open);
 Only if the property is before the question mark exist then it will be read, if not undefined it will be thrown 
 
 Optional chaining operator that we almost all the time we use with the nullish coalescing operator so that we can do somethin in case that we can a results from the array or object taht we checking.
+
+ Looping Objects: Object Keys, Values, and Entries
+
+ 
