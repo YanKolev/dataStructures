@@ -294,3 +294,64 @@ for (const item of menu.entries()){
 for (const [i, el] of menu.entries()){
   console.log(`${i+1}:${el}`);
 }
+
+//------------ Enhanced Object Literals ----------
+
+//ES6 introduced the object literal- its literal due to its written in the code
+//there are 3 ways to write it 
+
+//if there is an object take away from it (removing opening hours and making second object)
+openingHours: openingHours, //inside the object
+//with enhanced object literals ES6:
+openingHours,
+
+//2nd one- writing methods- we do not have to make a property and set it to function expressions. we can set it 
+//removing function and semicolons , vs code changing the method colors
+
+//3rd we can compute property names- calculate->
+const weekdays = ['mon', 'tue', 'wed']
+
+
+//----------- Optional Chaining --------------
+
+console.log(restaurant.openingHours.mon); // this will be undefined, since the property of mon/monday  does not exist
+
+//in order to check we need need
+if(restaurant.openingHours.mon)
+console.log(restaurant.openingHours.mon.open);
+//this is checking only for 1 propery- only for monday if the restaurant works
+
+//ES 2020- Optional chaining
+// if certain property does not exist in the object then undefined is returned immediately
+console.log(restaurant.openingHours.mon?.open);
+//only if the property is before the question mark exist then it will be read, if not undefined it will be thrown 
+
+//multiple opening chainings
+console.log(restaurant.openingHours.mon?.open);
+
+//Example
+
+const days = ['mon','tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+//to loop over this array an log to the console if the restaurant is open or closed on those days 
+
+for (const day of days){
+
+  const open = restaurant.openingHours[day]?open ?? 'closed':
+   //day comes dynamically from the array above
+  console.log( `On ${day} we open at ${open}`);
+
+} // works with nullish values, hence we used the nullish coalescing operator
+
+//Methods- we can check if a method actually exist before we call it
+
+console.log(restaurant.order?.(0,1)?? 'Method oes not exist');
+
+//Even works on arrays- to check if its empty 
+
+const users = [
+  {name:'John', email: 'hey@john.io'}
+];
+
+console.log(users[0]?.name ?? 'user array empty');
+//Optional chaining operator that we almost all the time we use with the nullish coalescing operator so that we can do somethin in case that we can a results from the array or object taht we checking.

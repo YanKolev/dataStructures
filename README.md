@@ -62,3 +62,14 @@ OR assignment operator => this operator assigns a value to variable if that curr
 
 The for of Loop
 This loop will loop over the entire array and for each adoration it will give us access to the current array element that we can specify-> in our case item it will log each element one by one. We can still use continue and break  keywords. 
+
+Enhanced Object Literals and Optional chaining- introduced in ES6 with goal of simplifying/ cleaning up the language
+
+Optional Chaining 
+S 2020- Optional chaining if certain property does not exist in the object then undefined is returned immediately: 
+ex:
+console.log(restaurant.openingHours.mon?.open);
+
+Only if the property is before the question mark exist then it will be read, if not undefined it will be thrown 
+
+Optional chaining operator that we almost all the time we use with the nullish coalescing operator so that we can do somethin in case that we can a results from the array or object taht we checking.
