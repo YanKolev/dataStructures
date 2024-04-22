@@ -390,3 +390,39 @@ console.log(entries);
 for(const [key,{open,close}] of entries){ //since values is object we are destructuing it we use open, close
   console.log(`on ${key} we open at ${open} and close at ${close}`);
 }
+
+
+
+
+
+// --- SETS---
+
+//Set is just a collection of unique values, that means that a set can never have any duplicates
+
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto','Pasta', 'Pizza']);
+//looks like an array- sets are also interables. 
+//its elements are unique and because of order of the elements its irrelevant
+
+console.log(new Set('John'));
+
+console.log(orderSet.size); 
+console.log(ordersSet.has('Pizza');)
+console.log(ordersSet.has('Pasta');)
+
+ordersSet.add('Garlick Bread');// adding elements
+ordersSet.delete('Risotto'); //deleting elements 
+
+//ordersSet.clear(); clearing the whole set
+
+//IN sets there are no indexes, we can not pull out a value of a set
+//looping is possible like every other iterable, main usecase is to remove duplicate of arrays
+
+//EX
+const staff = ['Waiter','Chef', 'Waiter', 'Manager','Chef','Waiter'];
+
+const staffUnique = [...new Set(staff)]; //with spread operator we can create array from the set
+
+
+
+
