@@ -76,4 +76,54 @@ Optional chaining operator that we almost all the time we use with the nullish c
 
  Looping Objects: Object Keys, Values, and Entries
 
- 
+ Choices between datastructures: 
+
+Data can come from 3 different sources: 
+
+1: From the program itself-> data written directly in the source code (e.g. status messages)
+
+2: From the UI: Data input from the use or data written in the DOM(e.g. tasks in todo app)
+
+3: From external sources: Data Fetched for example from web API (Application Programming Interface)
+
+After you gather the data, you end up having collections of data. And in order to access that data we are using data structures. There are 4 build in data structures in JS. 
+
+Mainly boiled to the decision between what are going to use? 
+
+If we need a simple list of values: we can use arrays or sets.
+
+On the other hand-> if we need key-value pairs then we need an object or a map.
+
+The big difference is that with key-value pair we have a way of describing the values(by using the key). On the other hand in a list like a set or an array- we simply have the value without any description.
+
+Data from APIs comes under JSON data format, it can be converted to JS objects and arrays. 
+
+Other built-in: WeakMap, WeakSet
+Other non-built-in: Stacks,Queues, Linked Lists, Trees, Hash Tables.
+
+Arrays: 
+-To be used when you need ordered list of values(might contain duplicates)
+-When you need to manipulate data
+
+Sets:
+-use when you need to work with unique values
+-use when high-performance is really important
+-use to remove duplicates from arrays
+
+Objects: 
+-More traditional key/value store
+-Easier to write and acccess the values with .and []
+
+Use when:
+-you need to include functions(methods)
+-when working with JSON->convert to map
+
+Maps: 
+-better performance
+-keys can have any data type
+-easy to iterate, easy to compute size
+
+Use when:
+-simply need to map key to values
+-when you need key that are not strings
+
