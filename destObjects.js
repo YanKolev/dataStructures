@@ -495,3 +495,58 @@ console.log(...question.entries());
 console.log(...question.keys());
 console.log(...question.values());
 
+//--- Working with Strings---
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+//just like in aarays we can get a character of a string
+console.log(plane[0]);
+console.log(plane[1]); // even if its displaying 3- it will clasify it as a string, if you want a number you need to transform it
+console.log('B737'[0]);
+console.log(airline.length);
+
+//strings also have methods
+
+console.log(airline.indexof('r')); //first occurance
+console.log(airline.lastIndexof('r')) //last occurance
+console.log(airline.indexOf('portugal'));
+
+console.log(airline.slice(4)); //4 is the begin parrameter- where the extraction will begin
+//the result that is long will be a substing
+//its imposible to mutate strings, they are primitives
+
+console.log(airline.slice(4, 7));
+
+//how to extract the first part when we do not have to hardcode the values
+console.log(airline.slice(0,airline.indexOf(' '))); // extracting the TAP, when we target the empty space
+console.log(arline.slice(airline.lastIndexOf(' ')+1)); // extracting the last word, we want to start at the last space, searching for the space, in order to remove the space we need to add +1
+
+//we can start wiht negative
+console.log(airline.slice(-2))
+console.log(airline.slice(1, -1))
+
+
+//Write a function that receives airplane seat and logs to the console, if its middle seat or not
+
+// B and E are middle seats
+const checkMiddleSeat = function(seat){
+  const s = seat.slice(-1);
+    if (s === 'B' || s === 'E');
+    console.log('You got the middle seat :(');
+    else console.log('You got lucky');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E')
+
+//why all of this works- strings are primitives,
+//why they have methods?
+// Whever we call a method on a string, JS automatically behind the scenes
+// converts the string primitive to string object with the same content and then on that object the methods are called.
+//the process is called boxing, as its puts the string in a box which is the object.
+
+console.log(new String('John'));
+console.log(typeof new String('John').slice(1));
+

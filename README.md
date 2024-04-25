@@ -127,3 +127,13 @@ Use when:
 -simply need to map key to values
 -when you need key that are not strings
 
+
+---String Boxing---
+
+why all of this works- strings are primitives, why they have methods?
+
+Whever we call a method on a string, JS automatically behind the scenes->converts the string primitive to string object with the same content and then on that object the methods are called.
+
+The process is called boxing, as its puts the string in a box which is the object.
+
+When the operation is done, the object is converted to regular string primitive, if fact all string methods return primitives, even if called on string object.
