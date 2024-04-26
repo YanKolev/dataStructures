@@ -550,3 +550,75 @@ checkMiddleSeat('3E')
 console.log(new String('John'));
 console.log(typeof new String('John').slice(1));
 
+// changing the case of a string
+
+console.log(airline.toLowerCase);
+console.log(airline.toUpperCase);
+
+//to fix capitalization in a passanger name
+
+const passanger = 'jOhN'; //john
+const passangerLower = passanger.toLowerCase();
+const passangerCorrect = passangerLower[0].toUpperCase()+ passangerLower.slice(1);
+console.log(passangerCorrect);
+
+
+// to check user input email (comparing emails)
+
+const email = 'hello@john.io';
+const loginEmain = '  Hello@john.Io/n';
+//basically we need to convert the login email with the mistakes and check it with the first one
+
+//1 convert it to lower case
+const lowerEmail = loginEmain.toLowerCase();
+//2removing spaces
+const trimEmail = lowerEmail.trim();
+
+//we can make it all in 1 step 
+const normalizedEmail = loginEmain.toLowerCase().trim();// when the lowercase method returns a string we can immediately call the second trim
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// ------To replace part of strings-------
+
+const priceGB = '288,97E';
+const priceUS = priceGB.replace('E', '$').replace(',', '.');
+//this will replace the E-euro with USD nad comma0 used in EU with dot
+
+
+const announcement = 'All passengers come to boarding door 23. Boarding door 23!'
+
+//now we need to fix the wrong announcement
+console.log(announcement.replace('door', 'gate')); // this will replace only the first occurance
+// there is a method later to be sudmitted - replaceALL, however it does not work atm 
+
+//there is another solution- using regular expression
+console.log(announcement.replace(/door/g, 'gate')); // we are putting slashes and g (g means global)
+//replace method is case sensitive
+
+//3 methods that return booleans
+
+//includes
+const plane = ' Airbus A320neo';
+console.log(plane.includes('A320'));
+//starts with
+console.log(plane.startsWith('Air'));
+//edns with
+if (plane.startsWith('Airbus') && plane.endsWith('neo')){
+  console.log('Part of the NEW AIRBUS FAMILY');
+};
+
+//practice exercise
+const checkBaggage = function(items){
+  const baggage = items.toLowerCase(); //its important for normalization of all the input to be placed to lowercase
+  if(baggage.includes('knife')|| baggage.includes('gun')){
+    console.log('You are NOT allowed on board')
+  } else{
+    console.log('Welcome aboard!');
+  }
+
+};
+
+checkBaggage('I have a laptop, some food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
