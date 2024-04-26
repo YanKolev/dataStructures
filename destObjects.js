@@ -622,3 +622,81 @@ const checkBaggage = function(items){
 checkBaggage('I have a laptop, some food and a pocket Knife');
 checkBaggage('Socks and camera');
 checkBaggage('Got some snacks and a gun for protection');
+
+// ---STRINGS PART 3---
+
+
+//SPLIT AND JOIN
+
+
+console.log('a+very+nice+string'.split('+'));
+//we are using the split method and we are specifying a divider string(+) in our case and it will store the results in a new array
+
+console.log('John Smith'.split(' '));
+
+const [firstName, lastName] = 'John Smith'.split(' ');
+
+//join method- the oposite of split
+
+['Mr', firstName, lastName.toUpperCase()].join(' '); //this combinati of split and join  is quite used
+
+//function to capitalize the name provided below
+
+
+
+const capitalizedName = function(name){
+  const names = name.split(' '); // split by the space with will be an array 
+  const namesUpper = [];
+
+  for (const n of names){
+    namesUpper.push (n[0].toUpperCase + n.slice[1]) 
+    // for of loop- n stands for name, hence we use n-> 
+    //we will capitilize it with taking the first letter
+    // convert it then joined with the resot of the word-> 
+    //from position 1-(since the first is capitalized)
+    //then we make the new array names upper and push it 
+
+    // DIFFERENT METHOD FOR SAME-> namesUpper.push(n.replace(n[0]), n[0].toUpperCase)
+  }
+  console.log(namesUpper.join(' '))
+
+}
+
+capitalizedName('jessica ann smith davis')
+capitalizedName('john smith')
+// to capitalize the names below-> make the first letter of each name big
+/* we have multiple worlds, we need to capitalize them one by one the best way 
+it will be to have them inside of an array that we can loop over- we will use the 
+split method for that*/
+
+
+// PADDING
+
+const message = 'Go to game 23!'
+console.log(message.padStart(25, '+').padEnd(35, '+'));
+
+//when u see a credit card on the internet you dont see the full number, 
+//below is a function that will do the masking until the last 4 digits
+
+const maskCreditCard = function(number){
+  const str = number + ''; //adding empty string- so that one of the operands of + is a string it will convert the other ones to a string
+  const last = srt.slice(-4);
+  return last.padStart(str.length, '*'); //using padding to mask the number, as we took only the last 4
+
+}
+
+maskCreditCard(344342323623626324323);
+maskCreditCard('23423424364564564523423423');
+
+//Repeat
+
+const message2 = 'Bad weather... All Departures Delayed...'
+console.log(message2.repeat(5))
+
+const planesInLine = function(n){
+  console.log(`There are ${n} planes in line ${plane.repeat(n)}`);
+
+}
+
+planesInLine(5);
+planesInLine(3);
